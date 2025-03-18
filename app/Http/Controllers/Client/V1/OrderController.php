@@ -8,7 +8,7 @@ use App\OrderStatusEnum;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
     public function __construct(public OrderService $orderService){}
 
