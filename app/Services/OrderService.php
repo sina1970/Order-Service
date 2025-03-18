@@ -11,21 +11,31 @@ class OrderService
 {
     public function __construct(public OrderRepositoryInterface $orderRepository){}
 
-    public function findOrder(int $id){
+    public function findOrder(int $id):Model{
         return $this->orderRepository->find($id);
     }
 
-    public function cereateOrder(int $customer_id , array $product_lists):Model{
-        $total_price= 0;
-        foreach ($product_lists as $product_list){
+    public function cereateOrder(int $customerId , array $productLists):Model{
+        $totalPrice= 0;
+        foreach ($productLists as $productList){
             //get product data from inventory service
         }
 
         return $this->orderRepository->create([
             "uuid" => Str::uuid(),
-            "customer_id" => $customer_id,
-            "total_price" => $total_price,
+            "customer_id" => $customerId,
+            "total_price" => $totalPrice,
             "status" => OrderStatusEnum::PENDING->value
+        ]);
+    }
+
+    public function getProductsData(array $productIds):array {
+        //send request to inventory service and get the product data
+    }
+
+    public function updateOrderStatus(int $id, OrderStatusEnum $orderStatus){
+        $this->orderRepository->update($id, [
+            "status" => $orderStatus->value
         ]);
     }
 
