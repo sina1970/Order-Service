@@ -29,7 +29,7 @@ class OrderService
         ]);
     }
 
-    public function getProductsData(array $productIds):array {
+    public function getProductsData(array $productIds) {
         //send request to inventory service and get the product data
     }
 
