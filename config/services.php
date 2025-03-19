@@ -34,5 +34,8 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'inventory' => [
+        'url' => env("INVENTORY_URL", "http://127.0.0.1:9001")
+    ],
 
 ];
