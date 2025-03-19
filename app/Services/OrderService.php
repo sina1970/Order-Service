@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\OrderStatusEnum;
 use App\Repositories\Order\OrderRepositoryInterface;
+use App\ThirdParty\InventoryFacade;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 

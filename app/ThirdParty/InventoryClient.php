@@ -26,4 +26,9 @@ class InventoryClient
         }
         return $response->json();
     }
+
+    public function getProductData()
+    {
+
+    }
 }

@@ -6,7 +6,7 @@ use App\ThirdParty\InventoryClient;
 use App\ThirdParty\InventoryFacade;
 use Illuminate\Support\ServiceProvider;
 
-class ThirdPartyServiceProvider extends ServiceProvider
+class InventoryServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

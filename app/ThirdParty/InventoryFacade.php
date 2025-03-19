@@ -3,10 +3,13 @@
 namespace App\ThirdParty;
 
 use Illuminate\Support\Facades\Facade;
-
+/**
+ * @method static array changeProductStock(array $inventoryData, string $type)
+ */
 class InventoryFacade extends Facade
 {
-    public static function getFacadeAccessor()
+
+    protected static function getFacadeAccessor():string
     {
         return InventoryClient::class;
     }
