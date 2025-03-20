@@ -12,7 +12,7 @@ class OrderService
 {
     public function __construct(public OrderRepositoryInterface $orderRepository){}
 
-    public function findOrder(int $id):Model{
+    public function findOrder(int $id):?Model{
         return $this->orderRepository->find($id);
     }
 

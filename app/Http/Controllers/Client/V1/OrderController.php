@@ -14,7 +14,7 @@ class OrderController extends Controller
 
     public function findOrder(int $id){
         $response = $this->orderService->findOrder($id);
-        return ApiResponse::success($response);
+        return ApiResponse::success("success",$response);
     }
 
     public function createOrder(Request $request){
