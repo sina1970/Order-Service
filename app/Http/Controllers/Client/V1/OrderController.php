@@ -19,7 +19,7 @@ class OrderController extends Controller
 
     public function createOrder(Request $request){
         $response = $this->orderService->cereateOrder($request->customer_id, $request->product_lists);
-        return ApiResponse::success($response);
+        return ApiResponse::success("success", $response);
     }
 
     public function updatOrderStatus(int $id, Request $request){
