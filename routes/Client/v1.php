@@ -9,4 +9,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('order')->group(function() {
 
     Route::get('find/{id}', [OrderController::class,'findOrder']);
+    Route::post('/',[OrderController::class, 'createOrder']);
+    Route::put('change-order-status',[OrderController::class,'updatOrderStatus']);
 });
