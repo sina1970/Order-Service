@@ -14,7 +14,7 @@ class InventoryClient
 
     public function changeProductStock(array $inventoryData, string $type)
     {
-        $url = $this->uri.'api/change-stock';
+        $url = $this->uri.'api/internal/v1/change-stock';
         $body = [
             'inventoryData' => $inventoryData,
             'type' => $type
@@ -30,5 +30,18 @@ class InventoryClient
     public function getProductData()
     {
 
+    }
+
+    public function getManyProductsData(array $productList){
+
+        $url = $this->uri."/api/internal/v1/products-data";
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+        ])->post($url, ['productLists' => $productList]);
+        if(!$response->successful()){
+            throw new \Exception("ridi");
+        }
+        return $response->json();
     }
 }
