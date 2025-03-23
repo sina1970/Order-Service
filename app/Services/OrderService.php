@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\OrderStatusEnum;
 use App\Repositories\Order\OrderRepositoryInterface;
+use App\Repositories\OrderEvents\OrderEventRepositoryInterface;
 use App\Repositories\OrderItems\OrderItemRepositoryInterface;
 use App\ThirdParty\InventoryFacade;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,7 @@ class OrderService
     public function __construct(
         public OrderRepositoryInterface $orderRepository,
         public OrderItemRepositoryInterface $orderItemRepository,
+        public OrderEventRepositoryInterface $orderEventRepository,
     ){}
 
     public function findOrder(int $id):?Model{
@@ -47,6 +49,12 @@ class OrderService
                     'price' => $this->getSingleProductPrice($productsData, $productList["productId"])
                 ]);
             }
+
+            $this->orderEventRepository->create([
+                "order_id" => $order->id,
+                "status" => OrderStatusEnum::PENDING->value,
+                "payload" => json_encode("customeId = $customerId"),
+            ]);
 
             DB::commit();
             return $order;

@@ -16,13 +16,18 @@ class OrderEventObserver
         //create event for message kafka service
         $message = new Message(
             body: [
-                "userId" => $orderEvent->order->user_id,
+                "userId" => $orderEvent->load('order')->user_id,
                 "status" => $orderEvent->status,
                 "payload" => $orderEvent->payload,
                 "source" => "Order Service"
             ]
         );
-        Kafka::publish('broker_name')->onTopic('toic_name')->withMessage($message)->send();
+        // dd(config('kafkatopics.brokers.notification'), config('kafkatopics.topics.notification'));
+
+
+        Kafka::publish("host.docker.internal:9092")
+        ->onTopic("notification-order")
+        ->withMessage($message)->send();
     }
 
     /**
