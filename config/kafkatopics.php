@@ -6,6 +6,6 @@ return [
     ],
 
     'brokers' => [
-        'notification' => env('KAFKA_BROKER', 'localhost:9092')
+        'notification' => env('KAFKA_BROKER', 'kafka:9092')
     ]
 ];

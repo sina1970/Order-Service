@@ -18,7 +18,7 @@ class OrderEventObserver
             body: [
                 "userId" => $orderEvent->load('order')->user_id,
                 "status" => $orderEvent->status,
-                "payload" => $orderEvent->payload,
+                "payload" => "ad",
                 "source" => "Order Service"
             ]
         );
@@ -26,7 +26,7 @@ class OrderEventObserver
 
 
         Kafka::publish("host.docker.internal:9092")
-        ->onTopic("notification-order")
+        ->onTopic("notification")
         ->withMessage($message)->send();
     }
 
