@@ -26,8 +26,8 @@ class OrderEventObserver
 
 
         Kafka::publish(config('kafkatopics.brokers.notification'))
-        ->onTopic(config('kafkatopics.topics.notification'))
-        ->withMessage($message)->send();
+            ->onTopic(config('kafkatopics.topics.notification'))
+            ->withMessage($message)->send();
     }
 
     /**
