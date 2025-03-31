@@ -43,7 +43,10 @@ class OrderEventObserver
                 "source" => "Order Service"
             ]
         );
-        Kafka::publish('localhost:9092')->onTopic('notification')->withMessage($message)->send();
+
+        Kafka::publish(config('kafkatopics.brokers.notification'))
+            ->onTopic(config('kafkatopics.topics.notification'))
+            ->withMessage($message)->send();
     }
 
     /**

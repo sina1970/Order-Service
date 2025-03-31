@@ -33,7 +33,7 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function update(int $id, array $data):void
     {
-        $this->model->where('id', $id)->update([$data]);
+        $this->model->where('id', $id)->update($data);
 
     }
 

@@ -5,7 +5,7 @@ namespace App\Enums;
 enum OrderStatusEnum:string
 {
     case PENDING = 'pending';
-    case PROCCESSING = 'proccessing';
+    case PROCCESSING = 'processing';
     case COMPLETED = 'completed';
     case CANCELLED = 'cacncelled';
 }
