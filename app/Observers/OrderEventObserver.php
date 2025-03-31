@@ -14,19 +14,19 @@ class OrderEventObserver
     public function created(OrderEvent $orderEvent): void
     {
         //create event for message kafka service
+
         $message = new Message(
             body: [
-                "userId" => $orderEvent->load('order')->user_id,
+                "userId" => $orderEvent->order->customer_id,
                 "status" => $orderEvent->status,
                 "payload" => "ad",
                 "source" => "Order Service"
             ]
         );
-        // dd(config('kafkatopics.brokers.notification'), config('kafkatopics.topics.notification'));
 
 
-        Kafka::publish("host.docker.internal:9092")
-        ->onTopic("notification")
+        Kafka::publish(config('kafkatopics.brokers.notification'))
+        ->onTopic(config('kafkatopics.topics.notification'))
         ->withMessage($message)->send();
     }
 
@@ -43,7 +43,7 @@ class OrderEventObserver
                 "source" => "Order Service"
             ]
         );
-        Kafka::publish('broker_name')->onTopic('toic_name')->withMessage($message)->send();
+        Kafka::publish('localhost:9092')->onTopic('notification')->withMessage($message)->send();
     }
 
     /**

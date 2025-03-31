@@ -2,10 +2,10 @@
 
 return [
     'topics' => [
-        'notification' => 'notification-order'
+        'notification' => 'notification'
     ],
 
     'brokers' => [
-        'notification' => env('KAFKA_BROKER', 'kafka:9092')
+        'notification' => env('KAFKA_BROKER', 'localhost:9092')
     ]
 ];
