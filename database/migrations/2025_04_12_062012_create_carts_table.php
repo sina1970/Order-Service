@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->unique();
-            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('session_id')->nullable();
-            $table->decimal('total_price', 10, 2);
-            $table->enum('status',['pending', 'processing', 'completed', 'cancelled'])->default('pending');
+            $table->string('status')->default('active'); //active, expired, checked_out
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('carts');
     }
 };
