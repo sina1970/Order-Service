@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Client\V1;
 
 use App\Enums\OrderStatusEnum;
 use App\Repositories\Order\OrderRepositoryInterface;
@@ -10,7 +10,6 @@ use App\ThirdParty\InventoryFacade;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Ramsey\Uuid\Type\Decimal;
 use Throwable;
 
 class OrderService
@@ -86,5 +85,5 @@ class OrderService
         return $price;
     }
 
-    
+
 }

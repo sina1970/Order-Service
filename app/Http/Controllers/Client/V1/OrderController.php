@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Client\V1;
 
 use App\ApiResponse;
 use App\Http\Controllers\Controller;
-use App\Enums\OrderStatusEnum;
-use App\Services\OrderService;
+use App\Services\Client\V1\OrderService;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
